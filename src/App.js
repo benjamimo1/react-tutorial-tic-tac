@@ -1,6 +1,23 @@
-function Square({value}) { // value is considered a prop as it will be passed 
-  return <button className="square">{value}</button>; // {} are relevant
-}
+import { useState } from 'react';
+
+// value is considered a prop if it will be passed to a component , uses curly
+
+function Square() {
+  const [value, setValue] = useState(null);
+  
+  function handleClick() { // nested definition of a function
+      setValue("X");
+    }
+
+    return (
+      <button
+        className="square"
+        onClick={handleClick} // mapping happens here, onClick is the hook
+      >
+        {value}
+      </button>
+    );
+  }
 
 
 
@@ -16,21 +33,21 @@ export default function Board() {
   // The CSS defined in styles.css styles the divs with the className of board-row.
   return (
       <>
-        <div className="board-row">
-          <Square value="1" />
-          <Square value="2" />
-          <Square value="3" />
-        </div>
-        <div className="board-row">
-          <Square value="4" />
-          <Square value="5" />
-          <Square value="6" />
-        </div>
-        <div className="board-row">
-          <Square value="7" />
-          <Square value="8" />
-          <Square value="9" />
-        </div>
+<div className="board-row">
+        <Square />
+        <Square />
+        <Square />
+      </div>
+      <div className="board-row">
+        <Square />
+        <Square />
+        <Square />
+      </div>
+      <div className="board-row">
+        <Square />
+        <Square />
+        <Square />
+      </div>
       </>
     );
 }
